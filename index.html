@@ -2,24 +2,35 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>RM Paint</title>
         
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-
-        <div id="gridWrapper">
-            
-            <div id="menuContainer">
-                menu
+        
+        <!-- <div id="position">
+            <div id="toolMenuContainer">
+                <button id="toolMenuOpenBtn" onclick="openToolMenu()">☰ Menu</div>
+                <div id="toolMenu">
+                    menu
+                </div>
             </div>
-
+        </div>
+         -->
+        
+        <!-- <div id="position">
+            <button id="toolMenuOpenBtn" onclick="this.innerHTML = 'YES!'">☰ Menu</button>
+        </div> -->
+        
+        
+        <div id="content">
             <div id="canvasContainer">
                 <canvas id="drawingCanvas">Your browser does not support canvas</canvas>
-                canvas
             </div>
-            
         </div>
+        
+            
         
         
         <script src="script.js"></script>

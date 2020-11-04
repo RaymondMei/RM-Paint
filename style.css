@@ -1,29 +1,83 @@
-
-html, body {
+html {
     width: 100%;
     height: 100%;
     margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#gridWrapper {
-    width: 99.7%;
-    height: 99%;
-    margin: 0;
-    display: grid;
+
+/* #gridWrapper {
+
     border: 2px solid green;
+    position: relative;
+    width: 99%;
+    height: 99%;
+    margin: 0.1% 0.1%;
+    display: grid;
+    grid-template-areas: "menu canvas";
     grid-template-columns: 15% 85%;
+    grid-gap: 0.5%;
+    align-items: center;
+    
+} */
+
+/* #menuContainer {
+    border: 5px solid blue;
+    position: absolute;
+    grid-area: menu;
+    width: 100%; height: 99%;
+    z-index:1;
+} */
+/* #position {
+    position: relative;
+    border: 1px solid green;
+    width: 0px; height: 0px;
 }
 
-#menuContainer {
-    border: 5px solid blue;
+#toolMenuContainer {
+    position: absolute;
+    border: 2px solid red;
+    width: 300px; height: 600px;
+}
+#toolMenu {
+    position: absolute;
+    width: 0; height: 600px;
+    position: fixed;
+    z-index: 100;
+    top: 0; left: 0;
+    background-color: grey;
+    overflow-y: auto;
+
+} */
+
+#position {
+    position: relative;
+    width: 0; height: 0;
+    left: 100px; top: 100px;
+}
+#toolMenuBtn {
+    position: absolute;
+    width: 10vw; height: 520px;
 }
 
 #canvasContainer {
-    border: 5px solid red;
-    /* width: 1600px;
-    height: 900px; */
+    border: 4px solid black;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    width: 95vw; height: 95vh;
+}
+#drawingCanvas {
+    /* border: 5px solid black; */
+    width: 100%; height: 100%;
+    margin: 0;
 }
 
-#drawingCanvas {
-    border: 1px solid black;
+@media only screen and (max-width: 550px), (max-height: 300px) {
+    #drawingCanvas {
+        border-width: 1px;
+    }
 }
