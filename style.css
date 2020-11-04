@@ -1,0 +1,29 @@
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#gridWrapper {
+    width: 99.7%;
+    height: 99%;
+    margin: 0;
+    display: grid;
+    border: 2px solid green;
+    grid-template-columns: 15% 85%;
+}
+
+#menuContainer {
+    border: 5px solid blue;
+}
+
+#canvasContainer {
+    border: 5px solid red;
+    /* width: 1600px;
+    height: 900px; */
+}
+
+#drawingCanvas {
+    border: 1px solid black;
+}
