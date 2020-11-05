@@ -6,78 +6,73 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
-
-/* #gridWrapper {
-
-    border: 2px solid green;
-    position: relative;
-    width: 99%;
-    height: 99%;
-    margin: 0.1% 0.1%;
-    display: grid;
-    grid-template-areas: "menu canvas";
-    grid-template-columns: 15% 85%;
-    grid-gap: 0.5%;
-    align-items: center;
-    
-} */
-
-/* #menuContainer {
-    border: 5px solid blue;
-    position: absolute;
-    grid-area: menu;
-    width: 100%; height: 99%;
-    z-index:1;
-} */
-/* #position {
-    position: relative;
-    border: 1px solid green;
-    width: 0px; height: 0px;
-}
 
 #toolMenuContainer {
-    position: absolute;
-    border: 2px solid red;
-    width: 300px; height: 600px;
+    position: relative;
+    width: 0px; height: 0px;
+    left: 0; top: 0;
 }
 #toolMenu {
     position: absolute;
-    width: 0; height: 600px;
+    width: 0; height: 100%;
     position: fixed;
     z-index: 100;
     top: 0; left: 0;
-    background-color: grey;
+    background: black url("https://media.istockphoto.com/vectors/retro-80s-90s-paint-and-paintbrush-seamless-art-pattern-vector-id1131511023?b=1&k=6&m=1131511023&s=612x612&w=0&h=3CBfGktUQ0Wa3iyTMtR2PY2EVbFjhBE-bqe_vXXsGow=");
     overflow-y: auto;
+    transition: 0.8s;
+}
 
-} */
-
-#position {
+#toolMenuOpenBtn_Positioner {
     position: relative;
     width: 0; height: 0;
-    left: 100px; top: 100px;
+    /* left: 1vw; top: 1vh; */
+    left: 10px; top: 10px;
 }
-#toolMenuBtn {
+#toolMenuOpenBtn {
     position: absolute;
-    width: 10vw; height: 520px;
+    /* width: 9vw; height: 3vw/3; */
+    /* font-size: 1.2vw; */
+    width: 120px; height: 40px;
+    font-family: monospace;
+    font-size: 15px;
+    font-weight: bold;
+    /* padding: 0.5vw; */
+    border: none;
+    outline: none;
+}
+#toolMenuOpenBtn2 {
+    position: absolute;
+    display: none;
+    width: 60px; height: 25px;
+    font-size: 10px;
+    font-weight: bold;
+    border: none;
+    outline: none;
 }
 
 #canvasContainer {
     border: 4px solid black;
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
-    width: 95vw; height: 95vh;
+    width: 97vw; height: 97vh;
 }
 #drawingCanvas {
-    /* border: 5px solid black; */
     width: 100%; height: 100%;
     margin: 0;
 }
 
-@media only screen and (max-width: 550px), (max-height: 300px) {
-    #drawingCanvas {
+@media screen and (max-width: 550px), (max-height: 400px) {
+    #canvasContainer {
         border-width: 1px;
     }
+    #toolMenuOpenBtn {
+        display: none;
+    }
+    #toolMenuOpenBtn2 {
+        display: inline-block;
+    }
 }
+

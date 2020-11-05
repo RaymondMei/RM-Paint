@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,21 +8,22 @@
         
         <link rel="stylesheet" href="style.css">
     </head>
+
     <body>
         
-        <!-- <div id="position">
+        <div id="toolMenuOpenBtn_Positioner">
+            <button id="toolMenuOpenBtn" onclick="openToolMenu()">☰ Menu</button>
+            <button id="toolMenuOpenBtn2" onclick="openToolMenu()">☰</button>
+        </div>
+        
+        <div id="toolMenuContainer_Positioner">
             <div id="toolMenuContainer">
-                <button id="toolMenuOpenBtn" onclick="openToolMenu()">☰ Menu</div>
                 <div id="toolMenu">
-                    menu
+                    <button id="toolMenuCloseBtn" onclick="closeToolMenu()">X</button>
                 </div>
             </div>
         </div>
-         -->
         
-        <!-- <div id="position">
-            <button id="toolMenuOpenBtn" onclick="this.innerHTML = 'YES!'">☰ Menu</button>
-        </div> -->
         
         
         <div id="content">
@@ -32,7 +34,7 @@
         
             
         
-        
         <script src="script.js"></script>
+
     </body>
 </html>

@@ -53,7 +53,12 @@ function resizeWindow() {
     canvas.height = window.innerHeight-50;
 }
 
-
+// eslint-disable-next-line no-unused-vars
+function openToolMenu() {
+    var toolMenu = document.querySelector("#toolMenu");
+    toolMenu.style.width = "350px";
+    toolMenu.style.boxShadow = "5px 0 5px 1px rgba(0, 0, 0, 0.8)";
+}
 
 
 window.addEventListener("load", loadFunc());
