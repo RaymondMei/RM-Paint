@@ -7,6 +7,8 @@ html {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    background-color: rgb(255, 191, 71);
+    background-color: mediumpurple;
 }
 
 
@@ -16,48 +18,67 @@ html {
     left: 0; top: 0;
 }
 #toolMenu {
-    position: absolute;
-    width: 0; height: 100%;
     position: fixed;
+    width: 0; height: 100%;
     z-index: 100;
     top: 0; left: 0;
     background: black url("https://media.istockphoto.com/vectors/retro-80s-90s-paint-and-paintbrush-seamless-art-pattern-vector-id1131511023?b=1&k=6&m=1131511023&s=612x612&w=0&h=3CBfGktUQ0Wa3iyTMtR2PY2EVbFjhBE-bqe_vXXsGow=");
     overflow-y: auto;
     transition: 0.8s;
+    /* display: grid;
+    grid-template-areas: "paint erase"; */
+}
+
+.tools {
+    position: absolute;
+    width: 100px; height: 80px;
+    /* background-color: black; */
 }
 
 #toolMenuOpenBtn_Positioner {
     position: relative;
     width: 0; height: 0;
     /* left: 1vw; top: 1vh; */
-    left: 10px; top: 10px;
+    left: 15px; top: 15px;
+    user-select: none;
 }
 #toolMenuOpenBtn {
     position: absolute;
-    /* width: 9vw; height: 3vw/3; */
-    /* font-size: 1.2vw; */
     width: 120px; height: 40px;
+    z-index: 100;
     font-family: monospace;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
-    /* padding: 0.5vw; */
     border: none;
     outline: none;
+    background-color: rgb(255, 120, 120);
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px 2px;
 }
 #toolMenuOpenBtn2 {
     position: absolute;
-    display: none;
+    
     width: 60px; height: 25px;
     font-size: 10px;
     font-weight: bold;
     border: none;
     outline: none;
+    background-color: rgb(255, 120, 120);
+    display: none;
+}
+#toolMenuOpenBtn:hover, #toolMenuOpenBtn2:hover {
+    cursor: pointer;
+    background-color: gray;
+}
+#toolMenuOpenBtn:active, #toolMenuOpenBtn2:active {
+    box-shadow: 0 0 3px 2px;
 }
 
 #canvasContainer {
     border: 4px solid black;
     display: flex;
-    width: 97vw; height: 97vh;
+    width: 96vw; height: 96vh;
+    background-color: white;
 }
 #drawingCanvas {
     width: 100%; height: 100%;

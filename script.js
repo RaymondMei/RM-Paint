@@ -55,10 +55,18 @@ function resizeWindow() {
 
 // eslint-disable-next-line no-unused-vars
 function openToolMenu() {
-    var toolMenu = document.querySelector("#toolMenu");
-    toolMenu.style.width = "350px";
+    let toolMenu = document.querySelector("#toolMenu");
+    toolMenu.style.width = canvas.width/5 + "px";
+    
     toolMenu.style.boxShadow = "5px 0 5px 1px rgba(0, 0, 0, 0.8)";
 }
+// eslint-disable-next-line no-unused-vars
+function closeToolMenu() {
+    let toolMenu = document.querySelector("#toolMenu");
+    toolMenu.style.width = "0";
+    toolMenu.style.boxShadow = "none";
+}
+
 
 
 window.addEventListener("load", loadFunc());
