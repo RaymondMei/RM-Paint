@@ -1,4 +1,4 @@
-html {
+:root {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -8,9 +8,12 @@ html {
     align-items: center;
     overflow: hidden;
     background-color: rgb(255, 191, 71);
-    background-color: mediumpurple;
+    background: black url("https://www.mortenslessons.com/wp-content/uploads/2014/08/black-brick-textureblack-brick-wall-seamless-background-texture-background-or-jfzjdj91.jpg")
 }
 
+
+
+/* /////////////////// TOOLMENU /////////////////// */
 
 #toolMenuContainer {
     position: relative;
@@ -32,63 +35,120 @@ html {
 .tools {
     position: absolute;
     width: 100px; height: 80px;
-    /* background-color: black; */
 }
+
+/* /////////////////// TOOLMENU /////////////////// */
+
+
+
+/* /////////////////// TOOLMENU OPEN BUTTONS /////////////////// */
 
 #toolMenuOpenBtn_Positioner {
     position: relative;
     width: 0; height: 0;
-    /* left: 1vw; top: 1vh; */
     left: 15px; top: 15px;
     user-select: none;
 }
+
 #toolMenuOpenBtn {
     position: absolute;
     width: 120px; height: 40px;
-    z-index: 100;
-    font-family: monospace;
-    font-size: 20px;
+    z-index: 1;
+    color: white;
+    font-family: Helvetica;
+    font-size: 19px;
     font-weight: bold;
     border: none;
     outline: none;
-    background-color: rgb(255, 120, 120);
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #c4f441, #03a9f4);
+    background-size: 400%;
     border-radius: 4px;
-    box-shadow: 1px 1px 5px 2px;
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.5);
 }
-#toolMenuOpenBtn2 {
+#toolMenuOpenBtn::before {
+    content: "";
     position: absolute;
-    
-    width: 60px; height: 25px;
-    font-size: 10px;
-    font-weight: bold;
-    border: none;
-    outline: none;
-    background-color: rgb(255, 120, 120);
-    display: none;
+    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b,#03a9f4);
+    background-size: 400%;
+    border-radius: 4px;
+    opacity: 0;
+    transition: 0.5s;
 }
-#toolMenuOpenBtn:hover, #toolMenuOpenBtn2:hover {
-    cursor: pointer;
-    background-color: gray;
-}
-#toolMenuOpenBtn:active, #toolMenuOpenBtn2:active {
-    box-shadow: 0 0 3px 2px;
+#toolMenuOpenBtn:hover::before {
+    filter: blur(5px);
+    opacity: 0.8;
+    animation: animateBtn 8s linear infinite;
 }
 
+#toolMenuOpenBtn2 {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    width: 60px; height: 25px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #c4f441, #03a9f4);
+    background-size: 400%;
+    border-radius: 4px;
+}
+#toolMenuOpenBtn2::before {
+    content: "";
+    position: absolute;
+    top: -1px; left: -1px; right: -1px; bottom: -1px;
+    z-index: -1;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b,#03a9f4);
+    background-size: 400%;
+    border-radius: 4px;
+    opacity: 0;
+    transition: 0.5s;
+}
+#toolMenuOpenBtn2:hover::before {
+    filter: blur(10px);
+    opacity: 0.8;
+    animation: animateBtn 8s linear infinite;
+}
+
+#toolMenuOpenBtn:hover, #toolMenuOpenBtn2:hover {
+    cursor: pointer;
+    animation: animateBtn 8s linear infinite;
+}
+#toolMenuOpenBtn:active, #toolMenuOpenBtn2:active {
+    opacity: 0.9;
+    box-shadow: 0 0 3px 2px black inset;
+}
+
+@keyframes animateBtn {
+    0% {background-position: 0%;}
+    100% {background-position: 400%;}
+}
+
+/* /////////////////// TOOLMENU OPEN BUTTONS /////////////////// */
+
+
+
+/* /////////////////// CANVAS /////////////////// */
+
 #canvasContainer {
-    border: 4px solid black;
     display: flex;
     width: 96vw; height: 96vh;
-    background-color: white;
+    padding: 4px;
+    background-image: repeating-linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #c4f441, #03a9f4);
 }
 #drawingCanvas {
     width: 100%; height: 100%;
     margin: 0;
+    background-color: white;
 }
 
+/* /////////////////// CANVAS /////////////////// */
+
+
 @media screen and (max-width: 550px), (max-height: 400px) {
-    #canvasContainer {
-        border-width: 1px;
-    }
     #toolMenuOpenBtn {
         display: none;
     }
