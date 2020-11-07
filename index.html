@@ -4,6 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="images/PaintFavicon.png">
         <title>RM Paint</title>
         
         <link rel="stylesheet" href="style.css">
@@ -22,25 +23,54 @@
                 <div id="toolMenu">
                 
                     <div class="tools" id="paintTool">
-                        paintTool
+                        
                     </div>
+
                     <div class="tools" id="eraseTool">
-                        eraseTool
+                        
                     </div>
+
                     <div class="tools" id="rectangleTool">
-                        rectangleTool
+                        
                     </div>
+
                     <div class="tools" id="circleTool">
-                        circleTool
+                        
                     </div>
+
+                    <div class="tools" id="lineSizeTool">
+                        Line Size
+                        <input type="range" style="width:98%;" min="1" max="100" value="50">
+                        Line Opacity
+                        <input type="range" style="width:98%;" min="1" max="100" value="50">
+
+                    </div>
+
+                    <!-- <div class="tools" id="shapeModificationTool">
+                        <p id="shapeText" style="grid-area:Shape;">Shape</p> 
+                        <label for="shapeFill" style="grid-area:Fill;">Fill</label>
+                        <input type="checkbox" name="shapeFill" id="shapeFill" style="grid-area:FillBox;">
+                        <label for="shapePaint" style="grid-area:Paint;">Paint</label>
+                        <input type="checkbox" name="shapePaint" id="shapePaint" style="grid-area:PaintBox;">
+                    </div> -->
+                    <div class="tools" id="shapeModificationTool">
+                        <p id="shapeText">Shape</p> 
+                        <label for="shapeFill">Fill</label>
+                        <input type="checkbox" name="shapeFill" id="shapeFill"> <br>
+                        <label for="shapePaint">Paint</label>
+                        <input type="checkbox" name="shapePaint" id="shapePaint">
+                    </div>
+
                     <div class="tools" id="colorPicker">
-                        colorPicker
+                        
                     </div>
+
                     <div class="tools" id="clearTool">
-                        clearTool
+                        CLEAR
                     </div>
+
                     <div class="tools" id="downloadTool">
-                        downloadTool
+                        
                     </div>
                     
 

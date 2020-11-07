@@ -67,13 +67,16 @@ function openToolMenu() {
 
     toolMenuPositioner.style.pointerEvents = "auto";    
 
-    if(window.innerWidth >= 550){
-        toolMenu.style.width = "250px";
-        closeBtn.style.left = 250 + "px";
-    }else{
-        toolMenu.style.width = "175px";
-        closeBtn.style.left = 175 + "px";
-    }
+    // if(window.innerWidth >= 550){
+    //     toolMenu.style.width = "250px";
+    //     closeBtn.style.left = 250 + "px";
+    // }else{
+    //     toolMenu.style.width = "175px";
+    //     closeBtn.style.left = 175 + "px";
+    // }
+
+    toolMenu.style.width = "250px";
+    closeBtn.style.left = 250 + "px";
     toolMenu.style.boxShadow = "5px 0 5px 1px rgba(0, 0, 0, 0.8)";
 
 
@@ -91,7 +94,7 @@ function closeToolMenu() {
     toolMenu.style.boxShadow = "none";
 
     let closeBtn = document.querySelector("#toolMenuCloseBtn");
-    closeBtn.style.left = -26 + "px";
+    closeBtn.style.left = -45 + "px";
 }
 
 

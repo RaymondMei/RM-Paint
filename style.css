@@ -1,4 +1,15 @@
 :root {
+
+    --bkg: url("images/BlackBrickBackground.jpg");
+    --TM_bkg: url("images/PaintSeamlessToolMenuBackground.jpg");
+    --TM_paint: url("images/IconPaintbrush.png");
+    --TM_eraser: url("images/IconEraser.svg");
+    --TM_rect: url("images/IconRect.png");
+    --TM_circ: url("images/IconCirc.png");
+    --TM_colorPicker: url("images/IconColorPicker.jpg");
+    --TM_download: url("images/IconDownload.png");
+
+
     width: 100%;
     height: 100%;
     margin: 0;
@@ -8,7 +19,7 @@
     align-items: center;
     overflow: hidden;
     background-color: rgb(255, 191, 71);
-    background: black url("https://www.mortenslessons.com/wp-content/uploads/2014/08/black-brick-textureblack-brick-wall-seamless-background-texture-background-or-jfzjdj91.jpg")
+    background: black var(--bkg);
 }
 
 
@@ -16,12 +27,28 @@
 /* /////////////////// TOOLMENU /////////////////// */
 
 .tools {
-    /* width: 100px; */
     height: 80px;
     margin: 10px;
     background-color: white;
     border: 4px solid grey;
+    font-family: Arial, monospace;
+    cursor: pointer;
 }
+
+::-webkit-scrollbar { 
+    width: 6px; 
+} 
+::-webkit-scrollbar-track { 
+    background: mediumpurple;
+    border-radius: 5px; 
+} 
+::-webkit-scrollbar-thumb { 
+    background: black; 
+    border-radius: 5px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+    background: #555; 
+} 
 
 #toolMenuContainer_Positioner {
     position: relative;
@@ -40,16 +67,18 @@
     position: fixed;
     width: 0; height: 100%;
     top: 0; left: 0;
-    background: black url("https://media.istockphoto.com/vectors/retro-80s-90s-paint-and-paintbrush-seamless-art-pattern-vector-id1131511023?b=1&k=6&m=1131511023&s=612x612&w=0&h=3CBfGktUQ0Wa3iyTMtR2PY2EVbFjhBE-bqe_vXXsGow=");
+    background: black var(--TM_bkg);
+    overflow-x: hidden;
     overflow-y: auto;
     transition: 0.8s;
     display: grid;
     align-items: center;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 125px 125px;
     grid-template-areas:
         "paint erase"
         "rect circ"
-        "colorPicker colorPicker"
+        "lineSize lineSize"
+        "shapeMod colorPicker"
         "clear clear"
         "download download";
 }
@@ -58,31 +87,89 @@
     z-index: 3;
     pointer-events: auto;
     cursor: pointer;
-    top: 0; left: -26px;
+    top: 0; left: -45px;
     transition: 0.8s;
-    
+    color: mediumpurple;
+    font-family: Arial, monospace;
+    font-size: 19px;
+    font-weight: bold;
+    padding: 8px 13px 8px 13px;
+    border: none;
+    outline: none;
+    background: white;
+    background-size: 400%;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.5);
 }
 
 #paintTool {
     grid-area: paint;
+    background: white var(--TM_paint) no-repeat;
+    background-size: 90%;
+    background-position: center center;
 }
 #eraseTool {
     grid-area: erase;
+    background: white var(--TM_eraser) no-repeat;
+    background-size: 70%;
+    background-position: center center;
+
 }
 #rectangleTool {
     grid-area: rect;
+    background: white var(--TM_rect) no-repeat;
+    background-size: 90%;
+    background-position: center center;
 }
 #circleTool {
     grid-area: circ;
+    background: white var(--TM_circ) no-repeat;
+    background-size: 60%;
+    background-position: center center;
+}
+#lineSizeTool {
+    grid-area: lineSize;
+    height: 80%;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#shapeModificationTool {
+    grid-area: shapeMod;
+    padding-left: 5px;
+    line-height: 4px;
+    /* display: grid;
+    grid-template-areas:
+        "Shape Shape"
+        "Fill FillBox"
+        "Paint PaintBox";
+    grid-template-columns: 1fr 1fr; */
+    
 }
 #colorPicker {
     grid-area: colorPicker;
+    background: white var(--TM_colorPicker) no-repeat;
+    background-size: 85%;
+    background-position: center center;
 }
 #clearTool {
     grid-area: clear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, monospace;
+    font-size: 40px;
+    font-weight: bold;
 }
 #downloadTool {
     grid-area: download;
+    background: white var(--TM_download) no-repeat;
+    background-size: 40%;
+    background-position: center center;
 }
 
 
@@ -104,7 +191,7 @@
     width: 120px; height: 40px;
     z-index: 1;
     color: white;
-    font-family: Helvetica;
+    font-family: Arial, monospace;
     font-size: 19px;
     font-weight: bold;
     border: none;
@@ -198,12 +285,6 @@
 
 
 @media screen and (max-width: 550px), (max-height: 400px) {
-    #toolMenuContainer {
-        width: 175px;
-    }
-    .tools {
-        height: 40px;
-    }
     #toolMenuOpenBtn {
         display: none;
     }
