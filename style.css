@@ -15,27 +15,76 @@
 
 /* /////////////////// TOOLMENU /////////////////// */
 
-#toolMenuContainer {
+.tools {
+    /* width: 100px; */
+    height: 80px;
+    margin: 10px;
+    background-color: white;
+    border: 4px solid grey;
+}
+
+#toolMenuContainer_Positioner {
     position: relative;
     width: 0px; height: 0px;
     left: 0; top: 0;
+    z-index: 2;
+    user-select: none;
+    pointer-events: none;
+}
+#toolMenuContainer {
+    position: fixed;
+    width: 250px; height: 100%;
+    top: 0; left: 0;
 }
 #toolMenu {
     position: fixed;
     width: 0; height: 100%;
-    z-index: 100;
     top: 0; left: 0;
     background: black url("https://media.istockphoto.com/vectors/retro-80s-90s-paint-and-paintbrush-seamless-art-pattern-vector-id1131511023?b=1&k=6&m=1131511023&s=612x612&w=0&h=3CBfGktUQ0Wa3iyTMtR2PY2EVbFjhBE-bqe_vXXsGow=");
     overflow-y: auto;
     transition: 0.8s;
-    /* display: grid;
-    grid-template-areas: "paint erase"; */
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "paint erase"
+        "rect circ"
+        "colorPicker colorPicker"
+        "clear clear"
+        "download download";
+}
+#toolMenuCloseBtn {
+    position: absolute;
+    z-index: 3;
+    pointer-events: auto;
+    cursor: pointer;
+    top: 0; left: -26px;
+    transition: 0.8s;
+    
 }
 
-.tools {
-    position: absolute;
-    width: 100px; height: 80px;
+#paintTool {
+    grid-area: paint;
 }
+#eraseTool {
+    grid-area: erase;
+}
+#rectangleTool {
+    grid-area: rect;
+}
+#circleTool {
+    grid-area: circ;
+}
+#colorPicker {
+    grid-area: colorPicker;
+}
+#clearTool {
+    grid-area: clear;
+}
+#downloadTool {
+    grid-area: download;
+}
+
 
 /* /////////////////// TOOLMENU /////////////////// */
 
@@ -135,7 +184,7 @@
 
 #canvasContainer {
     display: flex;
-    width: 96vw; height: 96vh;
+    width: 95vw; height: 95vh;
     padding: 4px;
     background-image: repeating-linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #c4f441, #03a9f4);
 }
@@ -149,6 +198,12 @@
 
 
 @media screen and (max-width: 550px), (max-height: 400px) {
+    #toolMenuContainer {
+        width: 175px;
+    }
+    .tools {
+        height: 40px;
+    }
     #toolMenuOpenBtn {
         display: none;
     }

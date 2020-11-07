@@ -1,4 +1,5 @@
 var canvas = document.querySelector("#drawingCanvas");
+var rect, scaleX, scaleY;
 
 function loadFunc() {
 
@@ -9,9 +10,12 @@ function loadFunc() {
     var isDrawing = false;
 
     function startPos(e){
-        isDrawing = true;
-        context.beginPath();
-        draw(e);
+        if(e.button === 0){
+            isDrawing = true;
+            context.beginPath();
+            draw(e);
+        }
+        
     }
     function endPos(){
         isDrawing = false;
@@ -19,9 +23,9 @@ function loadFunc() {
     }
 
     function mousePos(e){
-        var rect = canvas.getBoundingClientRect();
-        var scaleX = canvas.width / rect.width;
-        var scaleY = canvas.height / rect.height;
+        rect = canvas.getBoundingClientRect();
+        scaleX = canvas.width / rect.width;
+        scaleY = canvas.height / rect.height;
         return {
             x: (e.clientX - rect.left) * scaleX,
             y: (e.clientY - rect.top) * scaleY
@@ -55,16 +59,39 @@ function resizeWindow() {
 
 // eslint-disable-next-line no-unused-vars
 function openToolMenu() {
+
+    let toolMenuPositioner = document.querySelector("#toolMenuContainer_Positioner");
     let toolMenu = document.querySelector("#toolMenu");
-    toolMenu.style.width = canvas.width/5 + "px";
-    
+    let closeBtn = document.querySelector("#toolMenuCloseBtn");
+
+
+    toolMenuPositioner.style.pointerEvents = "auto";    
+
+    if(window.innerWidth >= 550){
+        toolMenu.style.width = "250px";
+        closeBtn.style.left = 250 + "px";
+    }else{
+        toolMenu.style.width = "175px";
+        closeBtn.style.left = 175 + "px";
+    }
     toolMenu.style.boxShadow = "5px 0 5px 1px rgba(0, 0, 0, 0.8)";
+
+
+    
+    
 }
 // eslint-disable-next-line no-unused-vars
 function closeToolMenu() {
+
+    let toolMenuPositioner = document.querySelector("#toolMenuContainer_Positioner");
+    toolMenuPositioner.style.pointerEvents = "none";
+
     let toolMenu = document.querySelector("#toolMenu");
     toolMenu.style.width = "0";
     toolMenu.style.boxShadow = "none";
+
+    let closeBtn = document.querySelector("#toolMenuCloseBtn");
+    closeBtn.style.left = -26 + "px";
 }
 
 
