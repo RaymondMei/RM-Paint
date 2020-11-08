@@ -5,7 +5,7 @@ var contextMain = canvasMain.getContext("2d");
 var canvas = document.querySelector("#draftCanvas"); //DRAFT CANVAS
 var context = canvas.getContext("2d");
 
-var rect, scaleX, scaleY, startPos, lineSize=8, lineOpacity=1, prevPos, alpha=0.4;
+var rect, scaleX, scaleY, startPos, lineSize=8, lineOpacity=1, colorInput, prevPos, alpha=0.4;
 var gradient = context.createLinearGradient(0, 0, 1500, 0);
 gradient.addColorStop("0", "#03a9f4");
 gradient.addColorStop("0.25", "#f441a5");
@@ -34,10 +34,12 @@ var TM_lineOpacityRange = document.querySelector("#lineOpacityRange");
 var TM_shapeFill = document.querySelector("#shapeFill");
 var TM_shapePaint = document.querySelector("#shapePaint");
 var TM_colorPicker = document.querySelector("#colorPicker");
+var TM_colorInput = document.querySelector("#colorInput");
 var TM_clear = document.querySelector("#clearTool");
 var TM_download = document.querySelector("#downloadTool");
 borderChange(TM_paint, true);
 lineSizeFunc(); lineOpacityFunc();
+colorFunc();
 
 function resizeWindow() {
     canvasMain.width = window.innerWidth-50;
@@ -89,8 +91,8 @@ function loadFunc() {
 
         context.lineWidth = lineSize;
         context.lineCap = "round";
-        context.strokeStyle = "black";
-        context.fillStyle = "black";
+        context.strokeStyle = colorInput;
+        context.fillStyle = colorInput;
         canvas.style.opacity = alpha;
         contextMain.globalAlpha = alpha;
         
@@ -170,7 +172,7 @@ function loadFunc() {
     TM_lineOpacityRange.addEventListener("change", lineOpacityFunc);
     TM_shapeFill.addEventListener("change", shapeFillFunc);
     TM_shapePaint.addEventListener("change", shapePaintFunc);
-    // TM_colorPicker.addEventListener("click", colorPickerFunc);
+    TM_colorInput.addEventListener("change", colorFunc);
     TM_clear.addEventListener("click", clearFunc);
     TM_download.addEventListener("click", downloadFunc);
 
@@ -269,6 +271,11 @@ function shapePaintFunc() {
     }else{
         paintMode = false;
     }
+}
+function colorFunc() {
+    colorInput = TM_colorInput.value;
+    TM_colorPicker.style.borderColor = colorInput;
+    TM_colorPicker.style.boxShadow = "0 0 3px 3px "+colorInput+" inset";
 }
 function clearFunc() {
     contextMain.clearRect(0, 0, canvas.width, canvas.height);

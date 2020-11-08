@@ -149,6 +149,14 @@
     background-size: 85%;
     background-position: center center;
 }
+#colorInput {
+    position: relative;
+    left: -4px; top: -4px;
+    width: 101%;
+    height: 105%;
+    opacity: 0;
+    cursor: pointer;
+}
 #clearTool {
     grid-area: clear;
     display: flex;
