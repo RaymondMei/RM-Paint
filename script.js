@@ -17,6 +17,8 @@ var drawMode = true;
 var brushMode = true;
 var rectMode = false;
 var circMode = false;
+var fillMode = false;
+var paintMode = false;
 
 //TOOL MENU
 var toolMenuOpenBtn = document.querySelector("#toolMenuOpenBtn");
@@ -94,7 +96,7 @@ function loadFunc() {
         
 
         if(drawMode){
-            context.globalCompositeOperation = "source-over";
+            contextMain.globalCompositeOperation = "source-over";
         }else{
             context.strokeStyle = gradient;
             context.fillStyle = gradient;
@@ -103,13 +105,44 @@ function loadFunc() {
         
         if(rectMode) {
             context.clearRect(0, 0, canvas.width, canvas.height);
-            context.fillRect(startPos.x, startPos.y, pos.x-startPos.x, pos.y-startPos.y);
+            if(fillMode){
+                context.fillRect(startPos.x, startPos.y, pos.x-startPos.x, pos.y-startPos.y);
+            }else{
+                context.strokeRect(startPos.x, startPos.y, pos.x-startPos.x, pos.y-startPos.y);
+            }
+            if(paintMode){
+                contextMain.drawImage(canvas, 0, 0);
+                context.clearRect(0, 0, canvas.width, canvas.height);
+            }
             
         }else if(circMode) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            if(fillMode){
+                context.beginPath();
+                context.moveTo(startPos.x, startPos.y + (pos.y-startPos.y)/2);
+                context.bezierCurveTo(startPos.x, startPos.y, pos.x, startPos.y, pos.x, startPos.y + (pos.y-startPos.y)/2);
+                context.bezierCurveTo(pos.x, pos.y, startPos.x, pos.y, startPos.x, startPos.y + (pos.y-startPos.y)/2);
+                context.closePath();
+                context.stroke();
+                context.fill();
+            }else{
+                context.beginPath();
+                context.moveTo(startPos.x, startPos.y + (pos.y-startPos.y)/2);
+                context.bezierCurveTo(startPos.x, startPos.y, pos.x, startPos.y, pos.x, startPos.y + (pos.y-startPos.y)/2);
+                context.bezierCurveTo(pos.x, pos.y, startPos.x, pos.y, startPos.x, startPos.y + (pos.y-startPos.y)/2);
+                context.closePath();
+                context.stroke();
+            }
+            if(paintMode){
+                contextMain.drawImage(canvas, 0, 0);
+                context.clearRect(0, 0, canvas.width, canvas.height);
+            }
+            
             
 
+
+
         }else if(brushMode) {
-            context.beginPath();
             context.moveTo(prevPos.x, prevPos.y);
             context.lineTo(pos.x, pos.y);
             context.stroke();
@@ -135,8 +168,8 @@ function loadFunc() {
     TM_circ.addEventListener("click", circFunc);
     TM_lineSizeRange.addEventListener("change", lineSizeFunc);
     TM_lineOpacityRange.addEventListener("change", lineOpacityFunc);
-    // TM_shapeFill.addEventListener("change", shapeFillFunc);
-    // TM_shapePaint.addEventListener("change", shapePaintFunc);
+    TM_shapeFill.addEventListener("change", shapeFillFunc);
+    TM_shapePaint.addEventListener("change", shapePaintFunc);
     // TM_colorPicker.addEventListener("click", colorPickerFunc);
     TM_clear.addEventListener("click", clearFunc);
     TM_download.addEventListener("click", downloadFunc);
@@ -177,9 +210,9 @@ function closeToolMenu() {
 
 function borderChange(Element, on) {
     if(on){
-        Element.style.border = "4px solid red";
+        Element.style.border = "4px solid green";
     }else{
-        Element.style.border = "4px solid gray";
+        Element.style.border = "4px solid black";
     }
 }
 function paintFunc() {
@@ -192,7 +225,11 @@ function paintFunc() {
 }
 function eraseFunc() {
     drawMode = !drawMode;
-    borderChange(TM_erase, !drawMode);
+    if(!drawMode) { //eraser is on
+        TM_erase.style.border = "4px solid red";
+    }else{
+        TM_erase.style.border = "4px solid black";
+    }
 }
 function rectFunc() {
     rectMode = true;
@@ -203,7 +240,7 @@ function rectFunc() {
     borderChange(TM_circ, circMode);
 }
 function circFunc() {
-    cirMode = true;
+    circMode = true;
     rectMode = false;
     brushMode = false;
     borderChange(TM_paint, brushMode);
@@ -217,11 +254,24 @@ function lineSizeFunc() {
 function lineOpacityFunc() {
     lineOpacity = TM_lineOpacityRange.value;
     TM_lineOpacityRangeText.innerHTML = "Line Opacity: " + lineOpacity;
-    // dContext.globalAlpha = lineOpacity/100;
     alpha = lineOpacity/100;
 }
+function shapeFillFunc() {
+    if(TM_shapeFill.checked){
+        fillMode = true;
+    }else{
+        fillMode = false;
+    }
+}
+function shapePaintFunc() {
+    if(TM_shapePaint.checked){
+        paintMode = true;
+    }else{
+        paintMode = false;
+    }
+}
 function clearFunc() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    contextMain.clearRect(0, 0, canvas.width, canvas.height);
 }
 function downloadFunc() {
     TM_download.setAttribute("download", "image.png");
