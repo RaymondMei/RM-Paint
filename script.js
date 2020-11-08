@@ -140,9 +140,6 @@ function loadFunc() {
                 context.clearRect(0, 0, canvas.width, canvas.height);
             }
             
-            
-
-
 
         }else if(brushMode) {
             context.moveTo(prevPos.x, prevPos.y);
@@ -229,8 +226,12 @@ function eraseFunc() {
     drawMode = !drawMode;
     if(!drawMode) { //eraser is on
         TM_erase.style.border = "4px solid red";
+        paintMode = false;
+        TM_shapePaint.disabled = true;
     }else{
         TM_erase.style.border = "4px solid black";
+        shapePaintFunc();
+        TM_shapePaint.disabled = false;
     }
 }
 function rectFunc() {
