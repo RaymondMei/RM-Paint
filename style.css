@@ -116,13 +116,13 @@
     background-position: center center;
 
 }
-#rectangleTool {
+#rectTool {
     grid-area: rect;
     background: white var(--TM_rect) no-repeat;
     background-size: 90%;
     background-position: center center;
 }
-#circleTool {
+#circTool {
     grid-area: circ;
     background: white var(--TM_circ) no-repeat;
     background-size: 60%;
@@ -137,18 +137,10 @@
     justify-content: center;
     align-items: center;
 }
-
 #shapeModificationTool {
     grid-area: shapeMod;
     padding-left: 5px;
     line-height: 4px;
-    /* display: grid;
-    grid-template-areas:
-        "Shape Shape"
-        "Fill FillBox"
-        "Paint PaintBox";
-    grid-template-columns: 1fr 1fr; */
-    
 }
 #colorPicker {
     grid-area: colorPicker;
@@ -275,7 +267,7 @@
     padding: 4px;
     background-image: repeating-linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #c4f441, #03a9f4);
 }
-#drawingCanvas {
+#drawingCanvas, #drawingCanvas_Draft {
     width: 100%; height: 100%;
     margin: 0;
     background-color: white;

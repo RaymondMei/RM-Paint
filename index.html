@@ -12,47 +12,34 @@
 
     <body>
         
+
+
         <div id="toolMenuOpenBtn_Positioner">
-            <button id="toolMenuOpenBtn" onclick="openToolMenu()">☰ MENU</button>
-            <button id="toolMenuOpenBtn2" onclick="openToolMenu()">☰</button>
+            <button id="toolMenuOpenBtn">☰ MENU</button>
+            <button id="toolMenuOpenBtn2">☰</button>
         </div>
 
         
+
         <div id="toolMenuContainer_Positioner">
             <div id="toolMenuContainer">
                 <div id="toolMenu">
                 
-                    <div class="tools" id="paintTool">
-                        
-                    </div>
+                    <div class="tools" id="paintTool" onclick=""></div>
 
-                    <div class="tools" id="eraseTool">
-                        
-                    </div>
+                    <div class="tools" id="eraseTool"></div>
 
-                    <div class="tools" id="rectangleTool">
-                        
-                    </div>
+                    <div class="tools" id="rectTool"></div>
 
-                    <div class="tools" id="circleTool">
-                        
-                    </div>
+                    <div class="tools" id="circTool"></div>
 
                     <div class="tools" id="lineSizeTool">
-                        Line Size
-                        <input type="range" style="width:98%;" min="1" max="100" value="50">
-                        Line Opacity
-                        <input type="range" style="width:98%;" min="1" max="100" value="50">
-
+                        <p id="lineSizeRangeText" style="margin:0;">Line Size</p>
+                        <input type="range" id="lineSizeRange" style="width:98%;" min="1" max="100" value="8">
+                        <p id="lineOpacityRangeText" style="margin:0;margin-top:5px;">Line Opacity</p>
+                        <input type="range" id="lineOpacityRange" style="width:98%;" min="0" max="100" value="100">
                     </div>
 
-                    <!-- <div class="tools" id="shapeModificationTool">
-                        <p id="shapeText" style="grid-area:Shape;">Shape</p> 
-                        <label for="shapeFill" style="grid-area:Fill;">Fill</label>
-                        <input type="checkbox" name="shapeFill" id="shapeFill" style="grid-area:FillBox;">
-                        <label for="shapePaint" style="grid-area:Paint;">Paint</label>
-                        <input type="checkbox" name="shapePaint" id="shapePaint" style="grid-area:PaintBox;">
-                    </div> -->
                     <div class="tools" id="shapeModificationTool">
                         <p id="shapeText">Shape</p> 
                         <label for="shapeFill">Fill</label>
@@ -61,30 +48,27 @@
                         <input type="checkbox" name="shapePaint" id="shapePaint">
                     </div>
 
-                    <div class="tools" id="colorPicker">
-                        
-                    </div>
+                    <div class="tools" id="colorPicker"></div>
 
                     <div class="tools" id="clearTool">
                         CLEAR
                     </div>
 
-                    <div class="tools" id="downloadTool">
-                        
-                    </div>
+                    <a class="tools" id="downloadTool"></a>
                     
 
                 </div>
+
                 <button id="toolMenuCloseBtn" onclick="closeToolMenu()">X</button>
+
             </div>
         </div>
         
         
-        
-        <div id="content">
-            <div id="canvasContainer">
-                <canvas id="drawingCanvas">Your browser does not support canvas</canvas>
-            </div>
+
+        <div id="canvasContainer">
+            <canvas id="drawingCanvas">Your browser does not support canvas</canvas>
+            <canvas id="drawingCanvas_Draft"></canvas>
         </div>
         
             
