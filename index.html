@@ -25,7 +25,7 @@
             <div id="toolMenuContainer">
                 <div id="toolMenu">
                 
-                    <div class="tools" id="paintTool" onclick=""></div>
+                    <div class="tools" id="paintTool"></div>
 
                     <div class="tools" id="eraseTool"></div>
 
@@ -37,7 +37,7 @@
                         <p id="lineSizeRangeText" style="margin:0;">Line Size</p>
                         <input type="range" id="lineSizeRange" style="width:98%;" min="1" max="100" value="8">
                         <p id="lineOpacityRangeText" style="margin:0;margin-top:5px;">Line Opacity</p>
-                        <input type="range" id="lineOpacityRange" style="width:98%;" min="0" max="100" value="100">
+                        <input type="range" id="lineOpacityRange" style="width:98%;" min="1" max="100" value="100">
                     </div>
 
                     <div class="tools" id="shapeModificationTool">
@@ -68,7 +68,7 @@
 
         <div id="canvasContainer">
             <canvas id="drawingCanvas">Your browser does not support canvas</canvas>
-            <canvas id="drawingCanvas_Draft"></canvas>
+            <canvas id="draftCanvas"></canvas>
         </div>
         
             

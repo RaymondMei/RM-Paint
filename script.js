@@ -1,9 +1,17 @@
 
-var canvas = document.querySelector("#drawingCanvas");
-var draft = document.querySelector("drawingCanvas_Draft");
+var canvasMain = document.querySelector("#drawingCanvas"); //MAIN CANVAS
+var contextMain = canvasMain.getContext("2d");
+
+var canvas = document.querySelector("#draftCanvas"); //DRAFT CANVAS
 var context = canvas.getContext("2d");
-var context_Draft = canvas.getContext("2d");
-var rect, scaleX, scaleY, startPos, lineSize=8, lineOpacity=1, alpha=0.4;
+
+var rect, scaleX, scaleY, startPos, lineSize=8, lineOpacity=1, prevPos, alpha=0.4;
+var gradient = context.createLinearGradient(0, 0, 1500, 0);
+gradient.addColorStop("0", "#03a9f4");
+gradient.addColorStop("0.25", "#f441a5");
+gradient.addColorStop("0.50", "#ffeb3b");
+gradient.addColorStop("0.75", "#c4f441");
+gradient.addColorStop("1", "#03a9f4");
 
 var drawMode = true;
 var brushMode = true;
@@ -30,6 +38,8 @@ borderChange(TM_paint, true);
 lineSizeFunc(); lineOpacityFunc();
 
 function resizeWindow() {
+    canvasMain.width = window.innerWidth-50;
+    canvasMain.height = window.innerHeight-50;
     canvas.width = window.innerWidth-50;
     canvas.height = window.innerHeight-50;
 }
@@ -39,8 +49,7 @@ function loadFunc() {
 
     resizeWindow();
     
-
-    //DRAW STUFF    
+    
     
     var isDrawing = false;
 
@@ -48,13 +57,16 @@ function loadFunc() {
         if(e.button === 0){
             isDrawing = true;
             startPos = mousePos(e);
+            prevPos = mousePos(e);
             context.beginPath();
             draw(e);
         }
         
     }
-    function endDraw(){
-        isDrawing = false;        
+    function endPos(){
+        isDrawing = false;
+        contextMain.drawImage(canvas, 0, 0);
+        context.clearRect(0, 0, canvas.width, canvas.height);
     }
 
     function mousePos(e){
@@ -71,38 +83,46 @@ function loadFunc() {
         if(!isDrawing) return;
         
         var pos = mousePos(e);
+
+
         context.lineWidth = lineSize;
         context.lineCap = "round";
         context.strokeStyle = "black";
+        context.fillStyle = "black";
+        canvas.style.opacity = alpha;
+        contextMain.globalAlpha = alpha;
+        
 
         if(drawMode){
             context.globalCompositeOperation = "source-over";
         }else{
-            context.globalCompositeOperation = "destination-out";
+            context.strokeStyle = gradient;
+            context.fillStyle = gradient;
+            contextMain.globalCompositeOperation = "destination-out";
         }
         
         if(rectMode) {
-            // context.clearRect(0, 0, canvas.width, canvas.height);
+            context.clearRect(0, 0, canvas.width, canvas.height);
             context.fillRect(startPos.x, startPos.y, pos.x-startPos.x, pos.y-startPos.y);
             
         }else if(circMode) {
             
 
         }else if(brushMode) {
+            context.beginPath();
+            context.moveTo(prevPos.x, prevPos.y);
             context.lineTo(pos.x, pos.y);
             context.stroke();
-            context.beginPath();
-            context.moveTo(pos.x, pos.y);
+            prevPos = pos;
         }
         
     }
     
 
 
-    canvas.addEventListener("mousedown", startDraw);
-    canvas.addEventListener("mouseup", endDraw);
-    canvas.addEventListener("mousemove", draw);
-
+    canvasMain.addEventListener("mousedown", startDraw);
+    canvasMain.addEventListener("mousemove", draw);
+    canvasMain.addEventListener("mouseup", endPos);
 
     //TOOL MENU STUFF
     
@@ -197,17 +217,17 @@ function lineSizeFunc() {
 function lineOpacityFunc() {
     lineOpacity = TM_lineOpacityRange.value;
     TM_lineOpacityRangeText.innerHTML = "Line Opacity: " + lineOpacity;
-    context.globalAlpha = lineOpacity/100;
+    // dContext.globalAlpha = lineOpacity/100;
+    alpha = lineOpacity/100;
 }
 function clearFunc() {
     context.clearRect(0, 0, canvas.width, canvas.height);
 }
 function downloadFunc() {
     TM_download.setAttribute("download", "image.png");
-    TM_download.setAttribute("href", canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    TM_download.setAttribute("href", canvasMain.toDataURL("image/png").replace("image/png", "image/octet-stream"));
 }
 
 
 window.addEventListener("load", loadFunc());
 window.addEventListener("resize", resizeWindow());
-
