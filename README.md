@@ -1,7 +1,5 @@
 # RM-Paint by Raymond Mei
 
-**Version 1.0**
-
 Grade 11 Computer Technology
 
 Genius ISU Web App
