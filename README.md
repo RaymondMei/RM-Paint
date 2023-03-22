@@ -1,8 +1,6 @@
 # RM-Paint by Raymond Mei
 
-Grade 11 Computer Technology
-
-Genius ISU Web App
+Free online drawing application with various tools. Download and export to popular image formats.
 
 <br>
 
